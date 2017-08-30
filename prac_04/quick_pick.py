@@ -6,24 +6,19 @@ MAX = 45
 
 
 def main():
-    valid_input = False
-    while not valid_input:
-        try:
-            picks = int(input("How many quick picks?: "))
-            if picks <= 0:
-                print("Quick pick cannot be zero or less than zero.")
-                continue
-            print_lottery_tickets(picks)
-            valid_input = True
-        except ValueError:
-            print("Quick pick cannot be a string.")
+    number_of_quick_picks = int(input("How many quick picks? "))
+    while number_of_quick_picks < 0:
+        print("That makes no sense!")
+        number_of_quick_picks = int(input("How many quick picks? "))
 
-
-def print_lottery_tickets(picks):
-    for i in range(picks):
+    for i in range(number_of_quick_picks):
+        numbers = []
         for j in range(NUMBER_PER_LINE):
             random_number = random.randint(MIN, MAX)
-            print("{:3}".format(random_number), end=' ')
-        print()
+            while random_number in numbers:
+                random_number = random.randint(MIN, MAX)
+            numbers.append(random_number)
+        numbers.sort()
+        print(" ".join("{:2}".format(i) for i in numbers))
 
 main()

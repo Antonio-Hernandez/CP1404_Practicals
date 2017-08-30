@@ -7,12 +7,12 @@ def main():
     print_income_report(incomes_list)
 
 
-def print_income_report(incomes_list):
+def print_income_report(incomes):
     print("Income Report" '\n' "_ _ _ _ _ _ _")
     total = 0
-    for j in range(1, len(incomes_list) + 1):
-        income = incomes_list[j - 1]
-        total += float(income)
-        print("Month {:>2} - Income: ${:>10.2f} Total: ${:>10.2f}".format(j, float(income), float(total)))
+    for j in range(1, len(incomes) + 1):
+        income = incomes[j - 1]
+        total += income
+        print("Month {:>2} - Income: ${:>10.2f} Total: ${:>10.2f}".format(j, income, total))
 
 main()
